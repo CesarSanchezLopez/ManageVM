@@ -1,0 +1,69 @@
+﻿using ManageVM.Api.Core.Entities;
+using ManageVM.Api.Core.Interfaces;
+using ManageVM.Api.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ManageVM.Api.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TokenController : Controller
+    {
+
+        public IConfiguration _configuration;
+
+        private readonly IConfiguration _config;
+        private readonly IAuthService _authService;
+        private readonly IUserRepository _userRepository;
+
+        public TokenController(IConfiguration config, IAuthService tokenService, IUserRepository userRepository)
+        {
+            _configuration = config;
+
+
+            _authService = tokenService;
+            _userRepository = userRepository;
+            _config = config;
+        }
+
+
+
+        [AllowAnonymous]
+        [Route("login")]
+        [HttpPost]
+        public IActionResult Login([FromBody] LoginRequest userModel)
+        {
+            if (string.IsNullOrEmpty(userModel.Username) || string.IsNullOrEmpty(userModel.Password))
+            {
+                return BadRequest("userName y password Raqueridos");
+            }
+            IActionResult response = Unauthorized();
+            User user = new User { Username = userModel.Username, Password = userModel.Password };
+            var validUser = _userRepository.GetUser(user);
+
+            var fechaActual = DateTime.UtcNow;
+            var validez = TimeSpan.FromHours(5);
+            if (validUser != null)
+            {
+                var generatedToken = _authService.GenerateToken(fechaActual, validUser, validez);
+                if (generatedToken != null)
+                {
+                    return Ok(new { Token = generatedToken });
+                    // return Ok(generatedToken);
+
+                }
+                //else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+    }
+}
