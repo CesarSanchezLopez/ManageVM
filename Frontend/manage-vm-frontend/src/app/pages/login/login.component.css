@@ -1,0 +1,84 @@
+.login-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #005bea, #00c6fb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Tarjeta de login */
+  .login-card {
+    background: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .login-card h1 {
+    margin-bottom: 1.5rem;
+    color: #005bea;
+    font-size: 1.8rem;
+  }
+  
+  /* Campos */
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Botón */
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    background-color: #005bea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0046c0;
+  }
+  
+  button:disabled {
+    background-color: #a0c4ff;
+    cursor: not-allowed;
+  }
+  
+  /* Mensaje de error */
+  .error {
+    color: red;
+    margin-top: 1rem;
+  }

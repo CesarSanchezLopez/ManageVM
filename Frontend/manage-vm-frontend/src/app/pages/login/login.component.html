@@ -1,0 +1,37 @@
+<div class="card mt-5 mb-5 p-5 bg-body-secondary text-body-primary shadow-lg rounded-lg" style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center; justify-self: center;">
+    <div class="card-header bg-body-secondary text-body-primary font-weight-bold">
+      
+
+      <h1>🔐 Iniciar Sesión</h1>
+  
+      <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
+        <div class="form-group">
+          <label for="username">Usuario</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            [(ngModel)]="username"
+            required
+            placeholder="Ej: admin"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            required
+            placeholder="******"
+          />
+        </div>
+  
+        <button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+  
+        <p class="error" *ngIf="error">{{ error }}</p>
+      </form>
+    </div>
+  </div>
