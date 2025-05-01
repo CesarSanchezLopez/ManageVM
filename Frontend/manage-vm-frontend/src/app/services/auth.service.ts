@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://localhost:7270/api/token'; // tu API
-
+  private apiUrl =  `${environment.apiUrl}/token`;//'https://localhost:7270/api/token'; // tu API
+  //private apiUrl =  'https://localhost:7270/api/token'; // tu API
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
+    console.log(`${this.apiUrl}/login`);
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, {
-      username,
+      email,
       password
     });
   }

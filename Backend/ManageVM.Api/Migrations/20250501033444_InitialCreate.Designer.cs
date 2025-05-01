@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageVM.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250430145252_InitialCreate")]
+    [Migration("20250501033444_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -29,6 +29,11 @@ namespace ManageVM.Api.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -49,14 +54,16 @@ namespace ManageVM.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dd78e392-efd1-44af-aa72-b55af9904d44",
+                            Id = "a0ca2a66-61b0-4ed7-92c2-7e2ed458e4d9",
+                            Email = "UserAdmin@gmail.com",
                             Password = "12345",
                             Role = 1,
                             Username = "UserAdmin"
                         },
                         new
                         {
-                            Id = "f94870a4-1229-4f70-9e12-130a1b1e94f2",
+                            Id = "637ee5b6-ea6e-420a-bd1d-3b2cb4a18c04",
+                            Email = "UserCliente@gmail.com",
                             Password = "12345",
                             Role = 0,
                             Username = "UserCliente"

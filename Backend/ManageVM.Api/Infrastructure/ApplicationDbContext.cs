@@ -40,6 +40,8 @@ namespace ManageVM.Api.Infrastructure
             {
               //  entity.HasKey(u => u.Id);
                 entity.Property(u => u.Username).IsRequired().HasMaxLength(50);
+                entity.Property(u => u.Email).IsRequired().HasMaxLength(50);
+                
                 entity.Property(u => u.Password).IsRequired();
                 entity.Property(u => u.Role).IsRequired(); // "Admin" o "User"
             });
@@ -51,6 +53,7 @@ namespace ManageVM.Api.Infrastructure
                 new User
                 {
                     Id = adminId,
+                    Email= "UserAdmin@gmail.com",
                     Username = "UserAdmin",
                     Password = "12345",//BCrypt.Net.BCrypt.HashPassword("Admin123!"), // usa BCrypt o tu método de hash
                     Role = Role.Admin
@@ -58,6 +61,7 @@ namespace ManageVM.Api.Infrastructure
                 new User
                 {
                     Id = userId,
+                    Email = "UserCliente@gmail.com",
                     Username = "UserCliente",
                     Password = "12345",//BCrypt.Net.BCrypt.HashPassword("User123!"),
                     Role = Role.User

@@ -7,14 +7,14 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  username = '';
+  email = '';
   password = '';
   error = '';
 
   constructor(private auth: AuthService, private router: Router) {}
 
   login() {
-    this.auth.login(this.username, this.password).subscribe({
+    this.auth.login(this.email, this.password).subscribe({
       next: (res) => {
         this.auth.saveToken(res.token);
         this.router.navigate(['/vms']);

@@ -19,6 +19,7 @@ namespace ManageVM.Api.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
                 },
@@ -50,11 +51,11 @@ namespace ManageVM.Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Password", "Role", "Username" },
+                columns: new[] { "Id", "Email", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { "dd78e392-efd1-44af-aa72-b55af9904d44", "12345", 1, "UserAdmin" },
-                    { "f94870a4-1229-4f70-9e12-130a1b1e94f2", "12345", 0, "UserCliente" }
+                    { "637ee5b6-ea6e-420a-bd1d-3b2cb4a18c04", "UserCliente@gmail.com", "12345", 0, "UserCliente" },
+                    { "a0ca2a66-61b0-4ed7-92c2-7e2ed458e4d9", "UserAdmin@gmail.com", "12345", 1, "UserAdmin" }
                 });
         }
 

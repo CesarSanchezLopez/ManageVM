@@ -35,12 +35,12 @@ namespace ManageVM.Api.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginRequest userModel)
         {
-            if (string.IsNullOrEmpty(userModel.Username) || string.IsNullOrEmpty(userModel.Password))
+            if (string.IsNullOrEmpty(userModel.Email) || string.IsNullOrEmpty(userModel.Password))
             {
-                return BadRequest("userName y password Raqueridos");
+                return BadRequest("Email y password Raqueridos");
             }
             IActionResult response = Unauthorized();
-            User user = new User { Username = userModel.Username, Password = userModel.Password };
+            User user = new User { Email = userModel.Email, Password = userModel.Password };
             var validUser = _userRepository.GetUser(user);
 
             var fechaActual = DateTime.UtcNow;

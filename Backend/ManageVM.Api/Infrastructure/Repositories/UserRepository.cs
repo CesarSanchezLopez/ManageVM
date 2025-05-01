@@ -20,7 +20,7 @@ namespace ManageVM.Api.Infrastructure.Repositories
         }
         public User GetUser(User userModel)
         {
-            return _context.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
+            return _context.Users.Where(x => x.Email.ToLower() == userModel.Email.ToLower()
                 && x.Password == userModel.Password).FirstOrDefault();
         }
         public async Task<ActionResult<User>> GetId(int id)

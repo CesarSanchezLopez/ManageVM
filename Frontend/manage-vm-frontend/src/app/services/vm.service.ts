@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vm } from '../models/vm.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class VmService {
-  private apiUrl = 'https://localhost:7270/api/vm'; // Ajusta según tu backend
+  private apiUrl =  `${environment.apiUrl}/vm`;//'https://localhost:7270/api/vm'; // Ajusta según tu backend
 
   constructor(private http: HttpClient) {}
 
