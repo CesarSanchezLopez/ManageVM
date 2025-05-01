@@ -1,5 +1,5 @@
 {
   "build": {
-    "dockerfile": "ManageVM.Api/Dockerfile"
+    "dockerfile": "Backend/ManageVM.Api/Dockerfile"
   }
 }
