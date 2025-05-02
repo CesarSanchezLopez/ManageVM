@@ -1,13 +1,10 @@
-using Microsoft.EntityFrameworkCore;
+using ManageVM.Api.Core.Interfaces;
+using ManageVM.Api.Core.Services;
 using ManageVM.Api.Infrastructure;
 using ManageVM.Api.Infrastructure.Repositories;
-using ManageVM.Api.Core.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using ManageVM.Api.Core.Services;
-using Microsoft.Net.Http.Headers;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

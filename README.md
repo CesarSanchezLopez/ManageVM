@@ -50,7 +50,19 @@ dotnet ef database update
 
 dotnet run --project Backend/ManageVM.Api
 
-### 5. Corre el Frontend Angular
+
+### 5.  Configura  el Frontend Angular
+
+Configura el punto de acceso a la api al archivo:
+C:Frontend/manage-vm-frontend/src/environments
+
+export const environment = {
+    production: false,
+    apiUrl: 'https://localhost:7270/api'
+  };
+
+
+### 6. Corre el Frontend Angular
 
 cd Frontend
 npm install
@@ -60,8 +72,11 @@ ng serve
 ### 🔐 Usuario de prueba
 
 {
-  "username": "UserAdmin",
+  "email": "UserAdmin@gmail.com",
   "password": "12345"
 }
-  
+{
+  "email": "UserCliente@gmail.com",
+  "password": "12345"
+}
   

@@ -10,6 +10,7 @@ export class VmsComponent implements OnInit {
   vms: Vm[] = [];
   selectedVM: Vm = this.emptyVm();
   editing = false;
+  errorMessage: string = '';
 
   constructor(private vmService: VmService) {}
 
@@ -18,9 +19,17 @@ export class VmsComponent implements OnInit {
   }
 
   loadVMs() {
-    this.vmService.getAll().subscribe((data) => (this.vms = data));
+    this.vmService.getAll().subscribe({
+      next: (data) => {
+        this.vms = data;
+        this.errorMessage = '';
+      },
+      error: (err) => {
+        this.errorMessage = err.message;
+        console.error('Error al cargar VMs:', err);
+      }
+    });
   }
-
   newVM() {
     this.selectedVM = this.emptyVm();
     this.editing = true;
@@ -37,26 +46,43 @@ export class VmsComponent implements OnInit {
         next: () => {
           this.loadVMs();
           this.cancel();
+          this.errorMessage = '';
         },
-        error: (err) => console.error('Error al actualizar VM:', err)
+        error: (err) => {
+          this.errorMessage = err.message;
+          console.error('Error al actualizar VM:', err);
+        }
       });
     } else {
-      console.log('Datos a enviar:', this.selectedVM);
       this.vmService.create(this.selectedVM).subscribe({
         next: () => {
           this.loadVMs();
           this.cancel();
+          this.errorMessage = '';
         },
-        error: (err) => console.error('Error al crear VM:', err)
+        error: (err) => {
+          this.errorMessage = err.message;
+          console.error('Error al crear VM:', err);
+        }
       });
     }
   }
 
   deleteVM(id: number) {
     if (confirm('¿Eliminar esta máquina virtual?')) {
-      this.vmService.delete(id).subscribe(() => this.loadVMs());
+      this.vmService.delete(id).subscribe({
+        next: () => {
+          this.loadVMs();
+          this.errorMessage = '';
+        },
+        error: (err) => {
+          this.errorMessage = err.message;
+          console.error('Error al eliminar VM:', err);
+        }
+      });
     }
   }
+  
 
   cancel() {
     this.editing = false;

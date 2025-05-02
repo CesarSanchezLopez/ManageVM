@@ -56,12 +56,12 @@ namespace ManageVM.Api.Controllers
                 }
                 //else
                 {
-                    return BadRequest();
+                    return Unauthorized();
                 }
             }
             else
             {
-                return BadRequest();
+                return Unauthorized();
             }
         }
 

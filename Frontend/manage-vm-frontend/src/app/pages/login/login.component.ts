@@ -19,7 +19,10 @@ export class LoginComponent {
         this.auth.saveToken(res.token);
         this.router.navigate(['/vms']);
       },
-      error: () => this.error = 'Login inválido'
+      // error: () => this.error = 'Login inválido'
+      error: (err) => {
+        this.error = err.message || 'Error inesperado';
+      }
     });
   }
 }

@@ -1,12 +1,14 @@
-<div class="card mt-5 mb-5 p-5 bg-body-secondary text-body-primary shadow-lg rounded-lg" style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center; justify-self: center;">
-    <div class="card-header bg-body-secondary text-body-primary font-weight-bold">
-      
 
+<div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+
+<div class="card mt-5 mb-5 p-5 bg-body-secondary text-body-primary shadow-lg rounded-lg  " style="display:block; margin:auto; width: 80%; max-width: 800px; min-width: 300px; align-self: center; justify-self: center;">
+    <div class="card-body bg-body-secondary text-body-primary font-weight-bold text-center fs-4">
+      
       <h1>🔐 Iniciar Sesión</h1>
   
       <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email:</label>
           <input
             type="text"
             id="email"
@@ -35,3 +37,4 @@
       </form>
     </div>
   </div>
+</div>
